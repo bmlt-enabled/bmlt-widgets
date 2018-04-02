@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<Module>
+  <ModulePrefs title="Meetings" 
+  	height="400"/> 
+  <Content type="html"><![CDATA[
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="https://bmlt.sezf.org/new_main_server/local_server/bmlt.js"></script>
+	<a id="Day1" href="javascript:selectDay(1)">Sunday</a>
+	<a id="Day2" href="javascript:selectDay(2)">Monday</a>
+	<a id="Day3" href="javascript:selectDay(3)">Tuesday</a>
+	<a id="Day4" href="javascript:selectDay(4)">Wednesday</a>
+	<a id="Day5" href="javascript:selectDay(5)">Thursday</a>
+	<a id="Day6" href="javascript:selectDay(6)">Friday</a>
+	<a id="Day7" href="javascript:selectDay(7)">Saturday</a>
+	<hr/>
+	<div id="results" />
+	<script type="text/javascript">
+		$(function() {
+			bmltClientInit('https://bmlt.sezf.org/new_main_server');
+			selectDay(getTodayDayOfWeek())
+		})
+
+		function selectDay(day) {
+		    $("[id^=Day]").css("font-weight", "")
+		    $("#Day" + day).css("font-weight", "bold")
+		  
+		    getMeetingsByServiceBodyIdAndWeekdayId(48, day, function(data) {
+		        var results = ""
+		        for (var i = 0; i < data.length; i++) {
+		            results += "<div id='meeting_name'><b>" + data[i].meeting_name + "</b></div>"
+		            results += "<div id='location_text'>" + data[i].location_text + "</div>"
+		            results += "<div id='location_street'>" + data[i].location_street + "</div>"
+		            results += "<div id='location_citystate'>" + data[i].location_municipality + ", " + data[i].location_province + "</div>"
+		            results += "<div id='day_and_time'>" + getDayOfWeek(data[i].weekday_tinyint - 1) + " " + militaryToStandard(data[i].start_time) + "</div>"
+		            results += "<div id='map'><a target='_blank' href='https://www.google.com/maps?q=" + data[i].latitude + "," + data[i].longitude + "'>Map</a></div>"
+		            results += "<p/>"
+		        }
+
+		        $("#results").html(results)
+		    })
+		}
+	</script>
+	]]>
+  </Content> 
+</Module>
