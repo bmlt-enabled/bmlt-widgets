@@ -4,7 +4,7 @@
   	height="400"/> 
   <Content type="html"><![CDATA[
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="https://bmlt.sezf.org/new_main_server/local_server/bmlt.js"></script>
+	<script src="https://bmlt.sezf.org/main_server/local_server/bmlt.js"></script>
 	<a id="Day1" href="javascript:selectDay(1)">Sunday</a>
 	<a id="Day2" href="javascript:selectDay(2)">Monday</a>
 	<a id="Day3" href="javascript:selectDay(3)">Tuesday</a>
