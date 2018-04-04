@@ -16,7 +16,7 @@
 	<div id="results" />
 	<script type="text/javascript">
 		$(function() {
-			bmltClientInit('https://bmlt.sezf.org/new_main_server');
+			bmltClientInit('https://bmlt.sezf.org/main_server');
 			selectDay(getTodayDayOfWeek())
 		})
 
